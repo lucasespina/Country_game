@@ -1,0 +1,28 @@
+GitHub
+git pull ➞  Update the local Git repository ➞ Sintax: Git pull
+git push ➞  send to main ➞ Sintax: Git push
+git status ➞  Give the Status ➞ Sintax: Git status 
+git add ➞ tells Git that you want to include updates to a particular file in the next commit ➞ Sintax: git add .(add everything) or git add ./example.py(just a file)
+git rm ➞ Remove a file ➞ Sintax: git rm ./Example.py
+git commit ➞  Prepare to be send (-m "Comment") ➞ Sintax: Git commit -m "This a text example"
+git clone ➞ clone a Git directory to a local path ➞ Sintax: git clone https://github.com/lucasespina/EP2_DeSoft.git
+
+Extra Commands:
+git log ➞ Check the log of the repository ➞ Sintax: git log
+git revert ➞ Undo the given commit ➞ Sintax: git revert (commit log)
+
+WARNING !!! Just use if you know what you are doing !!
+git branch ➞ Check which branch you are (Your branch have a green name) ➞ Sintax: git branch
+git branch -a ➞ List all branches ➞ Sintax: git branch -a
+git branch "name" ➞ create a new branch ➞ Sintax: git branch example_name
+git branch -d ➞ Delete a branch ➞ git branch -d (branch name)
+
+Example:
+1º git pull ➞ to get the newest updates of a project
+2º git status ➞ Check the project status 
+3º make your code, in this example we are gonna use "Example.py"
+4º git add ./Example.py ➞ Prepare the file to be add in the next commit
+5º git commit -m "This an update" ➞ command will save all staged changes, with a description
+6º git push ➞ Send the commits to remote repository(Git Hub repository)
+
+After these steps your code/update will be in the gitbug repository, you can check the github link
