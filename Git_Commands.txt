@@ -27,6 +27,9 @@ Example:
 
 After these steps your code/update will be in the gitbug repository, you can check the github link
 
-Terminal Commands:
-
+Terminal Commands(CMD):
 cd  ➞ move to the path ➞ Sintax: cd (path)
+ls ➞ show the files inside of the path ➞ Sintax: ls
+cls ➞ clear the temrinal ➞ Sintax: cls
+
+
