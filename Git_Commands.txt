@@ -1,4 +1,4 @@
-GitHub
+GitHub:
 git pull ➞  Update the local Git repository ➞ Sintax: Git pull
 git push ➞  send to main ➞ Sintax: Git push
 git status ➞  Give the Status ➞ Sintax: Git status 
@@ -29,3 +29,4 @@ After these steps your code/update will be in the gitbug repository, you can che
 
 Terminal Commands:
 
+cd  ➞ move to the path ➞ Sintax: cd (path)
