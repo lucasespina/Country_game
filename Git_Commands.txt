@@ -26,3 +26,6 @@ Example:
 6º git push ➞ Send the commits to remote repository(Git Hub repository)
 
 After these steps your code/update will be in the gitbug repository, you can check the github link
+
+Terminal Commands:
+
