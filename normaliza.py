@@ -1,14 +1,17 @@
 def normaliza(dados):
-    
-    for cont, cont_val in dados.items():
-        print(cont)
-        for pais, dsd in cont_val.items():
-            dsd.update({"continente":cont})
-
-    return
-
-
   
+    dsd = dict()
+    
+    for cont in dados:
+        for pais in dados[cont]:
+            
+            dsd[pais] = dados[cont][pais]
+            dsd[pais]['continente'] = cont
+            
+    return dsd
+
+
+
 
 base = {
   "asia": {
