@@ -31,5 +31,3 @@ Terminal Commands(CMD):
 cd  ➞ move to the path ➞ Sintax: cd (path)
 ls ➞ show the files inside of the path ➞ Sintax: ls
 cls ➞ clear the temrinal ➞ Sintax: cls
-
-
