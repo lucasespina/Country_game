@@ -1,33 +1,31 @@
 def adiciona_em_ordem(pais, distancia, lista):
     
-    list = []
-    list.append(pais)
-    list.append(distancia)
     i = 0
-    
-    list1 = []
-    
+    pais_escolhido = [pais, distancia]
+    lista_ordenada = []
+
+    if len(lista) == 0:
+        lista_ordenada.append(pais_escolhido)
+        return lista_ordenada
+
     while i < len(lista):
         
-        if lista[i][1] < distancia:
-           list1.append(lista[i])
-        list1.append(list)
-        
-        i = i + 1
+        if lista[i][1] < pais_escolhido[1]:
+            lista_ordenada.append(lista[i])
     
-    return list1
+        else:
+            if pais_escolhido not in lista_ordenada:
+                lista_ordenada.append(pais_escolhido)
+                i = i - 1
+            else:
+                lista_ordenada.append(lista[i])
+                
+        i = i + 1
+        
+    if pais_escolhido not in lista_ordenada:
+        lista_ordenada.append(pais_escolhido)
+        
+
+    return lista_ordenada
 
 
-
-lista = [
-    ['libia', 3678],
-    ['franca', 3998],
-    ['egito', 5008],
-    ['india', 9919],
-    ['japao', 13836]
-]
-
-pais = "siria"
-distancia = 5919
-
-print(adiciona_em_ordem(pais,distancia,lista))
