@@ -1,5 +1,6 @@
-import random
 import math
+import random
+
 
 
 def normaliza(dados):
@@ -3946,20 +3947,20 @@ print('cores_presentes: ', cores_presentes)
 
 
 # para as dicas, pegar os valores (area, populacao,letras_possiveis,cores_presentes)
-print('\n \n \n')
+print('\n')
 
 
-
+dica = 'Dicas:'
 tentativas = 20
 while tentativas > 0:
-    print('============================== \n |                            | \n | Bem-vindo ao Insper Países | \n |                            | \n =========== DeSoft =========== \n  Comandos:\n    dica       - entra no mercado de dicas \n    desisto    - desiste da rodada \n    inventario - exibe sua posição \n Um país foi escolhido, tente adivinhar! \n Você tem {0} tentativa(s) \n'.format(tentativas))
-
-    print('\n \n')
-
+    print(' ==============================                              \n | Bem-vindo ao Insper Países | \n |                            | \n =========== DeSoft =========== \n  Comandos:\n    dica       - entra no mercado de dicas \n    desisto    - desiste da rodada \n    inventario - exibe sua posição \n Um país foi escolhido, tente adivinhar! \n Você tem {0} tentativa(s) '.format(tentativas))
+    print("")
     continuar_jogando = True
+    
     
     # CONTINUAR JOGANDO
     while continuar_jogando:
+        tentativas = tentativas - 1
         comando = input('Qual seu palpite? ' )
 
         # DESISTO FEITO!!!
@@ -3986,32 +3987,23 @@ while tentativas > 0:
             comando = input('Qual seu palpite? ' )
 
 
-
         # DICA (FALTA ESPINA, FALAR COM BETO)
         if comando == 'dica':
             print('Mercado de Dicas \n ---------------------------------------- \n 1. Cor da bandeira  - custa 4 tentativas \n 2. Letra da capital - custa 3 tentativas \n 3. Área             - custa 6 tentativas \n 4. População        - custa 5 tentativas \n 5. Continente       - custa 7 tentativas \n 0. Sem dica \n ---------------------------------------- \n ')
-
-            opc = input('Escolha sua opção [0|1|2|3|4|5]: ')
-
-            while opc != 0:
-                print('1. Listar')
-                print('2. Incluir')
-                print('3. Apagar')
-                print('0. Sair')
-                opc = int(input('Digite uma opção: ')) 
-                if opc== 1:
-                    print()
-                    for nome, dados in agenda.items():
-                        print(f'{nome}: {dados["idade"]}, {dados["telefone"]}')
-                    print()
-                if opc== 2: 
-                    nome=  input('nome: ')
-                    idade = int(input('idade:'))
-                    tel =  input('telefone: ')
-                    agenda[nome] = {'idade':idade,'telefone': tel}
-                if opc == 3:
-                    #nome = input('De quem vc quer: ')
-                    agenda = agenda.clear()
+            
+            opc = int(input('Escolha sua opção [0|1|2|3|4|5]: '))
+            
+    
+            if opc== 2: 
+                ale = str((random.choice(letras_possiveis)))
+                tentativas = tentativas - 3
+                
+                if "\n  - Letras da capital: " in dica:
+                  dica += ", " + ale
+                if "\n  - Letras da capital: " not in dica:
+                  dica +="\n  - Letras da capital: " + ale
+                print(dica)
+                
 
 
 # COMENTARIOS FINAIS
@@ -4025,3 +4017,4 @@ while tentativas > 0:
 #     - devolver as dicas certas
 #     - arrumar o print
 # - Rever o codigo
+# - Arrumar as formatações
