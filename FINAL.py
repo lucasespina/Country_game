@@ -3965,7 +3965,7 @@ while tentativas > 0:
 
 		# ACERTOU O PAIS
 		if comando == pais_escolhido:
-			print('*** Parabéns! Você acertou após {0} tentativas!'.format(tentativas))
+			print('*** Parabéns! Você acertou após {0} tentativas!'.format(20-tentativas))
 			
 			# codigo pra jogar outra rodada
 			outra_rodada = input('Jogar novamente? [s|n] ' )
@@ -4019,9 +4019,9 @@ while tentativas > 0:
                 tentativas = tentativas - 3
                 
                 if "\n  - Letras da capital: " in dica:
-                    dica += ", " + ale
+                  dica += ", " + ale
                 if "\n  - Letras da capital: " not in dica:
-                    dica +="\n  - Letras da capital: " + ale
+                  dica +="\n  - Letras da capital: " + ale
                 print(dica)
 
 # COMENTARIOS FINAIS
