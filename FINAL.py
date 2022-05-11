@@ -3953,8 +3953,23 @@ print('\n')
 dica = 'Dicas:'
 tentativas = 20
 while tentativas > 0:
-    print(' ==============================                              \n | Bem-vindo ao Insper Países | \n |                            | \n =========== DeSoft =========== \n  Comandos:\n    dica       - entra no mercado de dicas \n    desisto    - desiste da rodada \n    inventario - exibe sua posição \n Um país foi escolhido, tente adivinhar! \n Você tem {0} tentativa(s) '.format(tentativas))
-    print("")
+    print("""
+ ============================ 
+|                            |
+| Bem-vindo ao Insper Países |
+|                            |
+ ==== Design de Software ==== 
+ 
+ Comandos:
+ 
+    dica       - entra no mercado de dicas
+    desisto    - desiste da rodada
+    inventario - exibe sua posição
+    
+Um país foi escolhido, tente adivinhar!
+Você tem {0} tentativa(s)
+""".format(tentativas))
+    
     continuar_jogando = True
     
     
@@ -3962,6 +3977,7 @@ while tentativas > 0:
     while continuar_jogando:
         tentativas = tentativas - 1
         comando = input('Qual seu palpite? ' )
+        print(tentativas)
 
 		# ACERTOU O PAIS
 		if comando == pais_escolhido:
