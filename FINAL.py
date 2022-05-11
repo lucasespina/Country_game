@@ -3979,7 +3979,27 @@ Você tem {0} tentativa(s)
         comando = input('Qual seu palpite? ' )
         print(tentativas)
 
-        # DESISTO FEITO!!!
+		# ACERTOU O PAIS
+		if comando == pais_escolhido:
+			print('*** Parabéns! Você acertou após {0} tentativas!'.format(tentativas))
+			
+			# codigo pra jogar outra rodada
+			outra_rodada = input('Jogar novamente? [s|n] ' )
+                if outra_rodada == 's':
+                    print('============================== \n |                            | \n | Bem-vindo ao Insper Países | \n |                            | \n =========== DeSoft =========== \n  Comandos:\n    dica       - entra no mercado de dicas \n    desisto    - desiste da rodada \n    inventario - exibe sua posição \n Um país foi escolhido, tente adivinhar! \n Você tem {0} tentativa(s) \n'.format(tentativas))
+                    print('\n \n')
+                    # comando = input('Qual seu palpite? ' )
+                elif outra_rodada != 's':       # nao jogar denovo
+                    continuar_jogando == False
+                    exit()
+
+		# ERROU O PAIS
+		if comando != pais_escolhido and comando != 'desisto' and comando != 'inventario' and comando != 'dica':
+            print('Distâncias: \n Dicas: \n  - Cores da bandeira: {0} \n  - Letras da capital: {1} \n  - Área: {2} \n  - População: {3} habitantes'.format(cores_presentes,letras_possiveis,area,populacao))
+			print('Você tem {} tentativa(s)'.format(tentativas))
+
+
+        # DESISTO SEMI-FEITO (O DESISTO TA DIMINUINDO TENTATIVAS) (vamo colocar a diminuicao de tentativas so pra quando ele chutar um pais, e nao com os comandos)!!!
         if comando == 'desisto':
             garantia = input('Tem certeza que deseja desistir da rodada? [s|n] ' )
             if garantia == 'n':
@@ -3989,9 +4009,9 @@ Você tem {0} tentativa(s)
                 print('Que pena, boa sorte na proxima vez.... PERDEDOR')
                 outra_rodada = input('Jogar novamente? [s|n] ' )
                 if outra_rodada == 's':
-                    print('============================== \n |                            | \n | Bem-vindo ao Insper Países | \n |                            | \n =========== DeSoft =========== \n  Comandos:\n    dica       - entra no mercado de dicas \n    desisto    - desiste da rodada \n    inventario - exibe sua posição \n Um país foi escolhido, tente adivinhar! \n Você tem {0} tentativa(s) \n Qual seu palpite?'.format(tentativas))
-                    print('\n \n \n')
-                    comando = input('Qual seu palpite? ' )
+                    print('============================== \n |                            | \n | Bem-vindo ao Insper Países | \n |                            | \n =========== DeSoft =========== \n  Comandos:\n    dica       - entra no mercado de dicas \n    desisto    - desiste da rodada \n    inventario - exibe sua posição \n Um país foi escolhido, tente adivinhar! \n Você tem {0} tentativa(s) \n'.format(tentativas))
+                    print('\n \n')
+                    # comando = input('Qual seu palpite? ' )
                 elif outra_rodada != 's':       # nao jogar denovo
                     continuar_jogando == False
                     exit()
@@ -4009,22 +4029,18 @@ Você tem {0} tentativa(s)
             
             opc = int(input('Escolha sua opção [0|1|2|3|4|5]: '))
             
-    
+
             if opc== 2: 
                 ale = str((random.choice(letras_possiveis)))
                 tentativas = tentativas - 3
                 
                 if "\n  - Letras da capital: " in dica:
-                  dica += ", " + ale
+                    dica += ", " + ale
                 if "\n  - Letras da capital: " not in dica:
-                  dica +="\n  - Letras da capital: " + ale
+                    dica +="\n  - Letras da capital: " + ale
                 print(dica)
-                
-
 
 # COMENTARIOS FINAIS
-
-# Espina isso eh pra vc:
 
 # Falta:
 # - fazer a quantidade d tentativas diminuirem com chutes e dicas 
@@ -4034,3 +4050,4 @@ Você tem {0} tentativa(s)
 #     - arrumar o print
 # - Rever o codigo
 # - Arrumar as formatações
+# - Reiniciar as tentativas quando comecar outra partida
