@@ -3953,23 +3953,8 @@ print('\n')
 dica = 'Dicas:'
 tentativas = 20
 while tentativas > 0:
-    print("""
- ============================ 
-|                            |
-| Bem-vindo ao Insper Países |
-|                            |
- ==== Design de Software ==== 
- 
- Comandos:
- 
-    dica       - entra no mercado de dicas
-    desisto    - desiste da rodada
-    inventario - exibe sua posição
-    
-Um país foi escolhido, tente adivinhar!
-Você tem {0} tentativa(s)
-""".format(tentativas))
-    
+    print(' ==============================                              \n | Bem-vindo ao Insper Países | \n |                            | \n =========== DeSoft =========== \n  Comandos:\n    dica       - entra no mercado de dicas \n    desisto    - desiste da rodada \n    inventario - exibe sua posição \n Um país foi escolhido, tente adivinhar! \n Você tem {0} tentativa(s) '.format(tentativas))
+    print("")
     continuar_jogando = True
     
     
@@ -3977,29 +3962,9 @@ Você tem {0} tentativa(s)
     while continuar_jogando:
         tentativas = tentativas - 1
         comando = input('Qual seu palpite? ' )
-        print(tentativas)
-
-		# ACERTOU O PAIS
-		if comando == pais_escolhido:
-			print('*** Parabéns! Você acertou após {0} tentativas!'.format(tentativas))
-			
-			# codigo pra jogar outra rodada
-			outra_rodada = input('Jogar novamente? [s|n] ' )
-                if outra_rodada == 's':
-                    print('============================== \n |                            | \n | Bem-vindo ao Insper Países | \n |                            | \n =========== DeSoft =========== \n  Comandos:\n    dica       - entra no mercado de dicas \n    desisto    - desiste da rodada \n    inventario - exibe sua posição \n Um país foi escolhido, tente adivinhar! \n Você tem {0} tentativa(s) \n'.format(tentativas))
-                    print('\n \n')
-                    # comando = input('Qual seu palpite? ' )
-                elif outra_rodada != 's':       # nao jogar denovo
-                    continuar_jogando == False
-                    exit()
-
-		# ERROU O PAIS
-		if comando != pais_escolhido and comando != 'desisto' and comando != 'inventario' and comando != 'dica':
-            print('Distâncias: \n Dicas: \n  - Cores da bandeira: {0} \n  - Letras da capital: {1} \n  - Área: {2} \n  - População: {3} habitantes'.format(cores_presentes,letras_possiveis,area,populacao))
-			print('Você tem {} tentativa(s)'.format(tentativas))
 
 
-        # DESISTO SEMI-FEITO (O DESISTO TA DIMINUINDO TENTATIVAS) (vamo colocar a diminuicao de tentativas so pra quando ele chutar um pais, e nao com os comandos)!!!
+        # DESISTO NAO FEITO(AINDA)!!!
         if comando == 'desisto':
             garantia = input('Tem certeza que deseja desistir da rodada? [s|n] ' )
             if garantia == 'n':
