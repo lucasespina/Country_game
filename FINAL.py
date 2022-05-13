@@ -85,7 +85,7 @@ while tentativas > 0:
                 exit()
 
 
-        # ERROU O CHUTE
+        # ERROU O CHUTE 
         if comando != pais_escolhido and comando != 'desisto' and comando != 'inventario' and comando != 'dica':
             if comando in paises:
                 tentativas -= 1
@@ -241,4 +241,4 @@ while tentativas > 0:
 
 # FALTA
 #   - Reescolher um pais quando comecar uma rodada nova
-#   - 
+#   - Lista de paises que ja foi chutato
