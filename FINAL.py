@@ -107,7 +107,7 @@ while tentativas > 0:
             comando = input('Qual seu palpite? ' )
 
         if comando == "dica":
-            print(fun.mercado())
+            print(fun.mercado(verifica_area,verifica_população,verifica_continente))
         
         # DICA (FALTA ESPINA, FALAR COM BETO)
         while comando == 'dica':
@@ -166,6 +166,8 @@ while tentativas > 0:
                         verifica_area = verifica_area + 1
                         
                         tentativas = tentativas - 6
+                        
+                        
                         
                     else:
                         print("Você não tem tentativas suficientes")
