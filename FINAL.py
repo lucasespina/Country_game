@@ -50,7 +50,7 @@ verifica_população = 0
 verifica_continente = 0
 
 while tentativas > 0:
-  
+
     print(fun.menu(tentativas))
     
     continuar_jogando = True
@@ -60,40 +60,42 @@ while tentativas > 0:
 
         comando = input('Qual seu palpite? ' )
 
-<<<<<<< HEAD
-		# ACERTOU O PAIS
-		if comando == pais_escolhido:
-			print('*** Parabéns! Você acertou após {0} tentativas!'.format(20-tentativas))
-			
-			# codigo pra jogar outra rodada
-			outra_rodada = input('Jogar novamente? [s|n] ' )
-                if outra_rodada == 's':
-                    print('============================== \n |                            | \n | Bem-vindo ao Insper Países | \n |                            | \n =========== DeSoft =========== \n  Comandos:\n    dica       - entra no mercado de dicas \n    desisto    - desiste da rodada \n    inventario - exibe sua posição \n Um país foi escolhido, tente adivinhar! \n Você tem {0} tentativa(s) \n'.format(tentativas))
-                    print('\n \n')
-                    # comando = input('Qual seu palpite? ' )
-                elif outra_rodada != 's':       # nao jogar denovo
-                    continuar_jogando == False
-                    exit()
 
-		# ERROU O PAIS
-		if comando != pais_escolhido and comando != 'desisto' and comando != 'inventario' and comando != 'dica':
-            print('Distâncias: \n Dicas: \n  - Cores da bandeira: {0} \n  - Letras da capital: {1} \n  - Área: {2} \n  - População: {3} habitantes'.format(cores_presentes,letras_possiveis,area,populacao))
-			print('Você tem {} tentativa(s)'.format(tentativas))
+        if comando == pais_escolhido:
+            print('*** Parabéns! Você acertou após {0} tentativas!'.format(20 - tentativas+1))
+            # arrumar o jogar outra rodada do desisto e copiar o codigo aqui
+            # isso eh como ta atualmente(incompleto) o "jogar novamente?"
+            outra_rodada = input('Jogar novamente? [s|n] ' )
+            if outra_rodada == 's':
+                tentativas = 20
+                print(fun.menu(tentativas))
+                print('\n \n')
+                # comando = input('Qual seu palpite? ' )
+            elif outra_rodada != 's':       # nao jogar denovo
+                continuar_jogando == False
+                exit()
+
+        if comando != pais_escolhido and comando != 'desisto' and comando != 'inventario' and comando != 'dica':
+            tentativas -= 1
+            # PRINTAR BAGO DO DICAS + CHUTES COM DISTANCIAS
+            print('Você tem {0} tentativa(s)'.format(tentativas))
 
 
-        # DESISTO SEMI-FEITO (O DESISTO TA DIMINUINDO TENTATIVAS) (vamo colocar a diminuicao de tentativas so pra quando ele chutar um pais, e nao com os comandos)!!!
-=======
-        # DESISTO NAO FEITO(AINDA)!!!
->>>>>>> 7958d1308f6d2c4e37c06edaf3e633d33298bfe4
+
+
+
+        # DESISTO NAO FEITO(RE-ESCOLHER O PAIS DEPOIS DE COMECAR UMA RODADA NOVA,[so copiar e colar o codigo usado no comeco???])!!!
         if comando == 'desisto':
             garantia = input('Tem certeza que deseja desistir da rodada? [s|n] ' )
             if garantia == 'n':
+                print('Você tem {0} tentativas'.format(tentativas))
                 comando = 0
                 
             elif garantia == 's':
                 print('Que pena, boa sorte na proxima vez.... PERDEDOR')
                 outra_rodada = input('Jogar novamente? [s|n] ' )
                 if outra_rodada == 's':
+                    tentativas = 20
                     print(fun.menu(tentativas))
                     print('\n \n')
                     # comando = input('Qual seu palpite? ' )
@@ -117,13 +119,6 @@ while tentativas > 0:
             #Cor da bandeira
             if opc == 1:
                 
-<<<<<<< HEAD
-                if "\n  - Letras da capital: " in dica:
-                  dica += ", " + ale
-                if "\n  - Letras da capital: " not in dica:
-                  dica +="\n  - Letras da capital: " + ale
-                print(dica)
-=======
                 if tentativas > 4:
           
                     cor_escohida = str((random.choice(cores_presentes)))
@@ -147,7 +142,6 @@ while tentativas > 0:
                     lista_letras.append(letra_escolhida)
                     
                     print(fun.dica_menu(lista_cor,lista_letras,area_lista,populacao_lista,continente_lista))
->>>>>>> 7958d1308f6d2c4e37c06edaf3e633d33298bfe4
 
                     tentativas = tentativas - 3
                 else:
@@ -221,11 +215,3 @@ while tentativas > 0:
             if opc == 0:
                 print(fun.dica_menu(lista_cor,lista_letras,area_lista,populacao_lista,continente_lista))
                 break
-                
-                
-                
-            
-                
-                
-              
-
