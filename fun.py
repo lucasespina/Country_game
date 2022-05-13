@@ -127,11 +127,8 @@ Mercado de Dicas
         mercado_menu += "4. População        - custa 5 tentativas\n"
     if verifica_continente == 0:
         mercado_menu += "5. Continente       - custa 7 tentativa\n"
-        
+    mercado_menu += "0. Sem dica                             \n"
     mercado_menu += "----------------------------------------"
-
-    
-
     
     return str(mercado_menu)
   
@@ -155,11 +152,8 @@ def continente2str(continente_lista,world):
     lista_continente_str = world + ', '.join(continente_lista)
     return str(lista_continente_str)
     
-
-    
 def dica_menu(lista_cor,lista_letras,area_lista,populacao_lista,continente_lista):
-    dica = """Dicas:
-  """
+    dica = """Dicas:\n"""
     if len(lista_cor) > 0:
         dica += str(cor2str(lista_cor,"  - Cores da bandeira: "))
     
@@ -177,6 +171,27 @@ def dica_menu(lista_cor,lista_letras,area_lista,populacao_lista,continente_lista
         
         
     return dica
+
+def opc_menu(verifica_area,verifica_populacao,verifica_continente):
+    
+    lista_opc = ["1","2","3","4","5","0"]
+
+    
+    if verifica_area > 0:
+        lista_opc.remove("3")
+    if verifica_populacao > 0:
+        lista_opc.remove("4")
+    if verifica_continente > 0:
+        lista_opc.remove("5")
+    
+    lista_opc_str ="[" + '|'.join(lista_opc) + "]"
+    
+    return lista_opc_str
+    
+            
+    
+
+
     
     
     

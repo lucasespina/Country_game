@@ -53,6 +53,7 @@ verifica_continente = 0
 distancia_lista = 'Distâncias: \n'
 
 
+
 while tentativas > 0:
 
     print(fun.menu(tentativas))
@@ -99,10 +100,6 @@ while tentativas > 0:
             print(distancia_lista)
             print('Você tem {0} tentativa(s)'.format(tentativas))
 
-
-
-
-
         # DESISTO NAO FEITO(RE-ESCOLHER O PAIS DEPOIS DE COMECAR UMA RODADA NOVA,[so copiar e colar o codigo usado no comeco???])!!!
         if comando == 'desisto':
             garantia = input('Tem certeza que deseja desistir da rodada? [s|n] ' )
@@ -133,7 +130,7 @@ while tentativas > 0:
         # DICA (FALTA ESPINA, FALAR COM BETO)
         while comando == 'dica':
           
-            opc = int(input('Escolha sua opção [0|1|2|3|4|5]: '))
+            opc = int(input('Escolha sua opção: {} '.format(str(fun.opc_menu(verifica_area,verifica_população,verifica_continente)))))
             
             #Cor da bandeira
             if opc == 1:
