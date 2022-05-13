@@ -2,6 +2,9 @@ import math
 import random
 import banco_de_dados
 import fun 
+import colorama
+from colorama import Fore
+
 
 dic = banco_de_dados.DADOS
 paises = banco_de_dados.paises
