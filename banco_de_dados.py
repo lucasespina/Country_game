@@ -1,3 +1,4 @@
+import random
 EARTH_RADIUS = 6371
 
 DADOS = {
@@ -3814,3 +3815,12 @@ DADOS = {
     }
   }
 }
+
+
+paises = []
+continentes = list(DADOS.keys())
+continente_escolhido = random.choice(continentes)
+for continente in continentes:
+  print(continente)
+  for pais in (DADOS[continente].keys()):
+    paises.append(pais)

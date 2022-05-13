@@ -4,6 +4,7 @@ import banco_de_dados
 import fun 
 
 dic = banco_de_dados.DADOS
+paises = banco_de_dados.paises
 EARTH_RADIUS = 6371
 
 # PAIS ESCOLHIDO
@@ -83,22 +84,26 @@ while tentativas > 0:
 
         # ERROU O CHUTE
         if comando != pais_escolhido and comando != 'desisto' and comando != 'inventario' and comando != 'dica':
-            tentativas -= 1
-            # PRINTAR BAGO DO DICAS + CHUTES COM DISTANCIAS
-            for continente in continentes:
-                if comando in dic[continente]:
-                    continente_chute = continente
-            info_chute = dic[continente_chute][comando]
-            latitude_chute = info_chute['geo']['latitude'] 
-            longitude_chute = info_chute['geo']['longitude'] 
-            # distancia = fun.haversine(EARTH_RADIUS,latitude_escolida,longitude_escolida,latitude_chute,longitude_chute)
-            distancia = fun.haversine(EARTH_RADIUS,latitude_chute,longitude_chute,latitude_escolida,longitude_escolida)
-            distancia_texto = '\t {0:.3f} km -> {1}'.format(distancia, comando)
-            distancia_lista += (str(distancia_texto))
-            distancia_lista += ('\n')
+            if comando in paises:
+                tentativas -= 1
+                # PRINTAR BAGO DO DICAS + CHUTES COM DISTANCIAS
+                for continente in continentes:
+                    if comando in dic[continente]:
+                        continente_chute = continente
+                info_chute = dic[continente_chute][comando]
+                latitude_chute = info_chute['geo']['latitude'] 
+                longitude_chute = info_chute['geo']['longitude'] 
+                # distancia = fun.haversine(EARTH_RADIUS,latitude_escolida,longitude_escolida,latitude_chute,longitude_chute)
+                distancia = fun.haversine(EARTH_RADIUS,latitude_chute,longitude_chute,latitude_escolida,longitude_escolida)
+                distancia_texto = '\t {0:.3f} km -> {1}'.format(distancia, comando)
+                distancia_lista += (str(distancia_texto))
+                distancia_lista += ('\n')
 
-            print(distancia_lista)
-            print('Você tem {0} tentativa(s)'.format(tentativas))
+                print(distancia_lista)
+                print('Você tem {0} tentativa(s)'.format(tentativas))
+            else:
+                print('Pais Desconhecido')
+
 
         # DESISTO NAO FEITO(RE-ESCOLHER O PAIS DEPOIS DE COMECAR UMA RODADA NOVA,[so copiar e colar o codigo usado no comeco???])!!!
         if comando == 'desisto':
@@ -229,3 +234,8 @@ while tentativas > 0:
             if opc == 0:
                 print(fun.dica_menu(lista_cor,lista_letras,area_lista,populacao_lista,continente_lista))
                 break
+
+
+# FALTA
+#   - Reescolher um pais quando comecar uma rodada nova
+#   - 
