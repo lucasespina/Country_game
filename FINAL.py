@@ -18,6 +18,8 @@ area = info_pais['area']
 populacao = info_pais['populacao']
 capital = info_pais['capital']
 bandeira = info_pais['bandeira']
+longitude_escolida = info_pais['geo']['longitude']
+latitude_escolida = info_pais['geo']['latitude'] 
 
 # LETRA(CAPITAL) PARA DICA
 letras_possiveis = []
@@ -48,6 +50,8 @@ continente_lista = []
 verifica_area = 0
 verifica_população = 0
 verifica_continente = 0
+distancia_lista = 'Distâncias: \n'
+
 
 while tentativas > 0:
 
@@ -60,7 +64,7 @@ while tentativas > 0:
 
         comando = input('Qual seu palpite? ' )
 
-
+        # ACERTOU O CHUTE
         if comando == pais_escolhido:
             print('*** Parabéns! Você acertou após {0} tentativas!'.format(20 - tentativas+1))
             # arrumar o jogar outra rodada do desisto e copiar o codigo aqui
@@ -75,9 +79,24 @@ while tentativas > 0:
                 continuar_jogando == False
                 exit()
 
+
+        # ERROU O CHUTE
         if comando != pais_escolhido and comando != 'desisto' and comando != 'inventario' and comando != 'dica':
             tentativas -= 1
             # PRINTAR BAGO DO DICAS + CHUTES COM DISTANCIAS
+            for continente in continentes:
+                if comando in dic[continente]:
+                    continente_chute = continente
+            info_chute = dic[continente_chute][comando]
+            latitude_chute = info_chute['geo']['latitude'] 
+            longitude_chute = info_chute['geo']['longitude'] 
+            # distancia = fun.haversine(EARTH_RADIUS,latitude_escolida,longitude_escolida,latitude_chute,longitude_chute)
+            distancia = fun.haversine(EARTH_RADIUS,latitude_chute,longitude_chute,latitude_escolida,longitude_escolida)
+            distancia_texto = '\t {0:.3f} km -> {1}'.format(distancia, comando)
+            distancia_lista += (str(distancia_texto))
+            distancia_lista += ('\n')
+
+            print(distancia_lista)
             print('Você tem {0} tentativa(s)'.format(tentativas))
 
 
