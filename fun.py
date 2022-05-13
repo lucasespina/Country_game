@@ -114,17 +114,22 @@ Você tem {0} tentativa(s)
     return str(menu)
     
 #Menu do Mercado
-def mercado():
+def mercado(verifica_area,verifica_populacao,verifica_continente):
     mercado_menu = """
 Mercado de Dicas
 ----------------------------------------
 1. Cor da bandeira  - custa 4 tentativas
 2. Letra da capital - custa 3 tentativas
-3. Área             - custa 6 tentativas
-4. População        - custa 5 tentativas
-5. Continente       - custa 7 tentativas
-0. Sem dica
-----------------------------------------"""
+"""
+    if verifica_area == 0:
+        mercado_menu += "3. Área             - custa 6 tentativas\n"
+    if verifica_populacao == 0:
+        mercado_menu += "4. População        - custa 5 tentativas\n"
+    if verifica_continente == 0:
+        mercado_menu += "5. Continente       - custa 7 tentativa\n"
+        
+    mercado_menu += "----------------------------------------"
+
     
 
     
