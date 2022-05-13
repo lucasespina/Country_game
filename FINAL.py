@@ -180,8 +180,6 @@ while tentativas > 0:
                         
                         tentativas = tentativas - 6
                         
-                        
-                        
                     else:
                         print("Você não tem tentativas suficientes")
                         
