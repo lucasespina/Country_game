@@ -1,5 +1,6 @@
 import math
 import random
+from colorama import Fore,Style
 
 #Adiciona em Ordem
 def adiciona_em_ordem(comando, distancia, distancia_lista):
@@ -38,9 +39,20 @@ def adiciona_em_ordem(comando, distancia, distancia_lista):
 def distancias(distancia_lista):
     texto_distancia = 'Distâncias: \n'
     for i in range(len(distancia_lista)):
-        texto_distancia += '\t {0:.3f} km -> {1} \n'.format(distancia_lista[i][1], distancia_lista[i][0])
+        if distancia_lista[i][1] < 1000:
+            texto_distancia += ('\033[0;32m \t {0:.3f} km -> {1} \n'.format(distancia_lista[i][1], distancia_lista[i][0]))
+            print('\033[0;0m')
+        elif distancia_lista[i][1] < 5000:
+            texto_distancia += ('\033[1;34m \t {0:.3f} km -> {1} \n'.format(distancia_lista[i][1], distancia_lista[i][0]))
+            print('\033[0;0m')
+        elif distancia_lista[i][1] < 10000:
+            texto_distancia += ('\033[1;31m \t {0:.3f} km -> {1} \n'.format(distancia_lista[i][1], distancia_lista[i][0]))
+            print('\033[0;0m')
+        else:
+            texto_distancia += ('\033[1;31m \t {0:.3f} km -> {1} \n'.format(distancia_lista[i][1], distancia_lista[i][0]))
+            print('\033[0;0m')
+    print('\033[0;0m')
     return texto_distancia
-
 
 # esta na lista
 def esta_na_lista(pais, lista):

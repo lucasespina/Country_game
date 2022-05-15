@@ -3,8 +3,7 @@ import random
 import banco_de_dados
 import fun 
 import colorama
-from colorama import Fore
-
+from colorama import Fore,Style
 
 dic = banco_de_dados.DADOS
 paises = banco_de_dados.paises
@@ -44,7 +43,7 @@ for cor in cores:
 print('\n')
 
 # info para developer, VERSAO FINAL TEM Q TER ISSO COMENTADO OU REMOVIDO
-# print('pais_escolhido: ', pais_escolhido)
+print('pais_escolhido: ', pais_escolhido)
 # print('letras_possiveis: ', letras_possiveis)
 # print('cores_presentes: ', cores_presentes)
 
@@ -73,7 +72,8 @@ while tentativas > 0:
 
         # ACERTOU O CHUTE
         if comando == pais_escolhido:
-            print('*** Parabéns! Você acertou após {0} tentativas!'.format(20 - tentativas+1))
+            print('\033[1;36m *** Parabéns! Você acertou após {0} tentativas!'.format(20 - tentativas+1))
+            print('\033[0;0m')
             # arrumar o jogar outra rodada do desisto e copiar o codigo aqui
             # isso eh como ta atualmente(incompleto) o "jogar novamente?"
             outra_rodada = input('Jogar novamente? [s|n] ' )
@@ -142,11 +142,6 @@ while tentativas > 0:
                 continuar_jogando == False
                 exit()
 
-
-
-
-
-
         # ERROU O CHUTE 
         if comando != pais_escolhido and comando != 'desisto' and comando != 'inventario' and comando != 'dica':
             if comando in paises:
@@ -165,10 +160,14 @@ while tentativas > 0:
                     chutes.append(comando)
                     distancia_lista = fun.adiciona_em_ordem(comando,distancia,distancia_lista)
                     print(fun.distancias(distancia_lista))
+                    print('\033[0;0m')
+                    print('Você tem \033[1;36m {0} \033[0;0m tentativas'.format(tentativas))
+                    print('\033[0;0m')
                 else:
-                    print("\n \n Voce ja tentou esse pais e viu que nao deu certo, ta tentando ele denovo porque? \n \n ")
+                    print("\n \n \033[1;36m Voce ja tentou esse pais e viu que nao deu certo, ta tentando ele denovo porque? \033[0;0m \n \n ")
+                    print('\033[0;0m')
                     print(fun.distancias(distancia_lista))
-
+                    print('\033[0;0m')
             else:
                 print('Pais Desconhecido')
 
