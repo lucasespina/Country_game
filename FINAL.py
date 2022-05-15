@@ -2,8 +2,6 @@ import math
 import random
 import banco_de_dados
 import fun 
-import colorama
-from colorama import Fore,Style
 
 dic = banco_de_dados.DADOS
 paises = banco_de_dados.paises
@@ -43,7 +41,7 @@ for cor in cores:
 print('\n')
 
 # info para developer, VERSAO FINAL TEM Q TER ISSO COMENTADO OU REMOVIDO
-print('pais_escolhido: ', pais_escolhido)
+# print('pais_escolhido: ', pais_escolhido)
 # print('letras_possiveis: ', letras_possiveis)
 # print('cores_presentes: ', cores_presentes)
 
@@ -171,7 +169,7 @@ while tentativas > 0:
             else:
                 print('Pais Desconhecido')
 
-        # DESISTO NAO FEITO(RE-ESCOLHER O PAIS DEPOIS DE COMECAR UMA RODADA NOVA,[so copiar e colar o codigo usado no comeco???])!!!
+        # DESISTO 
         if comando == 'desisto':
             garantia = input('Tem certeza que deseja desistir da rodada? [s|n] ' )
             if garantia == 'n':
@@ -179,7 +177,7 @@ while tentativas > 0:
                 comando = 0
                 
             elif garantia == 's':
-                print('Que pena, boa sorte na proxima vez.... PERDEDOR')
+                print('Que pena, boa sorte na proxima vez.... O pais era {0}'.format(pais_escolhido))
                 outra_rodada = input('Jogar novamente? [s|n] ' )
                 if outra_rodada == 's':
                     # OUTRO PAIS
@@ -226,14 +224,14 @@ while tentativas > 0:
                     chutes = []
                     print(fun.menu(tentativas))
                     print('\n \n')
-                    comando = input('Qual seu palpite? ' )
+                    # comando = input('Qual seu palpite? ' )
 
                 elif outra_rodada != 's':       # nao jogar denovo
                     print('\n \n Obrigado por jogar, volte sempre! \n \n')
                     continuar_jogando == False
                     exit()
 
-        # INVENTARIO (FALTA ESPINA, FALAR COM BETO)
+        # INVENTARIO
         if comando == 'inventario':
             print(fun.dica_menu(lista_cor,lista_letras,area_lista,populacao_lista,continente_lista))
             print(fun.distancias(distancia_lista))

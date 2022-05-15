@@ -1,6 +1,5 @@
 import math
 import random
-from colorama import Fore,Style
 
 #Adiciona em Ordem
 def adiciona_em_ordem(comando, distancia, distancia_lista):
