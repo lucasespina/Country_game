@@ -2,28 +2,28 @@ import math
 import random
 
 #Adiciona em Ordem
-def adiciona_em_ordem(pais, distancia, lista):
-    
+def adiciona_em_ordem(comando, distancia, distancia_lista):
+
     
     i = 0
-    pais_escolhido = [pais, distancia]
+    pais_escolhido = [comando, distancia]
     lista_ordenada = []
 
-    if len(lista) == 0:
+    if len(distancia_lista) == 0:
         lista_ordenada.append(pais_escolhido)
         return lista_ordenada
 
-    while i < len(lista):
+    while i < len(distancia_lista):
         
-        if lista[i][1] < pais_escolhido[1]:
-            lista_ordenada.append(lista[i])
+        if distancia_lista[i][1] < pais_escolhido[1]:
+            lista_ordenada.append(distancia_lista[i])
     
         else:
             if pais_escolhido not in lista_ordenada:
                 lista_ordenada.append(pais_escolhido)
                 i = i - 1
             else:
-                lista_ordenada.append(lista[i])
+                lista_ordenada.append(distancia_lista[i])
                 
         i += 1
         
@@ -33,6 +33,15 @@ def adiciona_em_ordem(pais, distancia, lista):
 
     return lista_ordenada
 
+
+# Printar as distancias
+def distancias(distancia_lista):
+    texto_distancia = 'Distâncias: \n'
+    for i in range(len(distancia_lista)):
+        texto_distancia += '\t {0:.3f} km -> {1} \n'.format(distancia_lista[i][1], distancia_lista[i][0])
+    return texto_distancia
+
+
 # esta na lista
 def esta_na_lista(pais, lista):
     for lugar in lista:
@@ -40,7 +49,7 @@ def esta_na_lista(pais, lista):
             return True
     else:
         return False
-    
+
 #Haversine
 def haversine(r, lat1, long1, lat2, long2):    
     d = (r*2*math.atan2(math.sqrt(math.sin(math.radians(lat2-lat1)/2.0)**2+math.cos(math.radians(lat1))*math.cos(math.radians(lat2))*math.sin(math.radians(long2-long1)/2.0)**2),math.sqrt(1-(math.sin(math.radians(lat2-lat1)/2.0)**2+math.cos(math.radians(lat1))*math.cos(math.radians(lat2))*math.sin(math.radians(long2-long1)/2.0)**2))))
@@ -82,8 +91,8 @@ def sorteia_letra(palavra, negadas):
         return escolhida
     else:
         return ''
-    
-    
+
+
 #Sorteia País
 def sorteia_pais(dic):
     
@@ -112,7 +121,7 @@ Você tem {0} tentativa(s)
 """.format(tentativas)
     
     return str(menu)
-    
+
 #Menu do Mercado
 def mercado(verifica_area,verifica_populacao,verifica_continente):
     mercado_menu = """
@@ -131,7 +140,7 @@ Mercado de Dicas
     mercado_menu += "----------------------------------------"
     
     return str(mercado_menu)
-  
+
 def cor2str(lista_cor, world):
     lista_cor_string = world + ', '.join(lista_cor)
     return str(lista_cor_string+"\n")
@@ -151,7 +160,7 @@ def populacao2str(populacao_lista,world):
 def continente2str(continente_lista,world):
     lista_continente_str = world + ', '.join(continente_lista)
     return str(lista_continente_str)
-    
+
 def dica_menu(lista_cor,lista_letras,area_lista,populacao_lista,continente_lista):
     dica = """Dicas:\n"""
     if len(lista_cor) > 0:
@@ -187,11 +196,3 @@ def opc_menu(verifica_area,verifica_populacao,verifica_continente):
     lista_opc_str ="[" + '|'.join(lista_opc) + "]"
     
     return lista_opc_str
-    
-            
-    
-
-
-    
-    
-    

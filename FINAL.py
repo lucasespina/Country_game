@@ -14,7 +14,6 @@ EARTH_RADIUS = 6371
 continentes = list(dic.keys())
 continente_escolhido = random.choice(continentes)
 pais_escolhido = fun.sorteia_pais(dic[continente_escolhido])
-print('pais_escolhido: ', pais_escolhido)
 
 # INFO do pais
 info_pais= dic[continente_escolhido][pais_escolhido]
@@ -31,19 +30,25 @@ letras_capital = list(capital)
 for letra in capital:
     if letra != ' ' and letra != "'":
         letras_possiveis.append(letra)
-print('letras_possiveis: ', letras_possiveis)
 
 # CORES PARA DICA
 cores_presentes = []
 cores = list(bandeira.keys())
 # print(cores)
 for cor in cores:
-    if bandeira[cor] != 0:
-        cores_presentes.append(cor)
-print('cores_presentes: ', cores_presentes)
+    if cor != 'outras':
+        if bandeira[cor] != 0:
+            cores_presentes.append(cor)
 
 # para as dicas, pegar os valores (area, populacao,letras_possiveis,cores_presentes)
 print('\n')
+
+# info para developer, VERSAO FINAL TEM Q TER ISSO COMENTADO OU REMOVIDO
+# print('pais_escolhido: ', pais_escolhido)
+# print('letras_possiveis: ', letras_possiveis)
+# print('cores_presentes: ', cores_presentes)
+
+
 
 tentativas = 20
 lista_cor = []
@@ -54,16 +59,13 @@ continente_lista = []
 verifica_area = 0
 verifica_população = 0
 verifica_continente = 0
-distancia_lista = 'Distâncias: \n'
-
+distancia_lista = []
+chutes = []
 
 
 while tentativas > 0:
-
     print(fun.menu(tentativas))
-    
     continuar_jogando = True
-    
     # CONTINUAR JOGANDO
     while continuar_jogando:
 
@@ -76,37 +78,99 @@ while tentativas > 0:
             # isso eh como ta atualmente(incompleto) o "jogar novamente?"
             outra_rodada = input('Jogar novamente? [s|n] ' )
             if outra_rodada == 's':
+
+                # OUTRO PAIS
+                # PAIS ESCOLHIDO
+                continentes = list(dic.keys())
+                continente_escolhido = random.choice(continentes)
+                pais_escolhido = fun.sorteia_pais(dic[continente_escolhido])
+
+                # INFO do pais
+                info_pais= dic[continente_escolhido][pais_escolhido]
+                area = info_pais['area']
+                populacao = info_pais['populacao']
+                capital = info_pais['capital']
+                bandeira = info_pais['bandeira']
+                longitude_escolida = info_pais['geo']['longitude']
+                latitude_escolida = info_pais['geo']['latitude'] 
+
+                # LETRA(CAPITAL) PARA DICA
+                letras_possiveis = []
+                letras_capital = list(capital)
+                for letra in capital:
+                    if letra != ' ' and letra != "'":
+                        letras_possiveis.append(letra)
+
+                # CORES PARA DICA
+                cores_presentes = []
+                cores = list(bandeira.keys())
+                for cor in cores:
+                    if cor != 'outras':
+                        if bandeira[cor] != 0:
+                            cores_presentes.append(cor)
+
+                print('\n')
+
+                # info para developer, VERSAO FINAL TEM Q TER ISSO COMENTADO OU REMOVIDO
+                # print('pais_escolhido: ', pais_escolhido)
+                # print('letras_possiveis: ', letras_possiveis)
+                # print('cores_presentes: ', cores_presentes)
+
+
+
+
                 tentativas = 20
+                lista_cor = []
+                lista_letras = []
+                area_lista = []
+                populacao_lista = []
+                continente_lista = []
+                verifica_area = 0
+                verifica_população = 0
+                verifica_continente = 0
+                distancia_lista = []
+                chutes = []
+
                 print(fun.menu(tentativas))
                 print('\n \n')
-                # comando = input('Qual seu palpite? ' )
+
+                comando = input('Qual seu palpite? ' )
+
             elif outra_rodada != 's':       # nao jogar denovo
+                print('\n \n Obrigado por jogar, volte sempre! \n \n')
+
                 continuar_jogando == False
                 exit()
+
+
+
+
 
 
         # ERROU O CHUTE 
         if comando != pais_escolhido and comando != 'desisto' and comando != 'inventario' and comando != 'dica':
             if comando in paises:
                 tentativas -= 1
-                # PRINTAR BAGO DO DICAS + CHUTES COM DISTANCIAS
+                # definir info pra distancia
                 for continente in continentes:
                     if comando in dic[continente]:
                         continente_chute = continente
                 info_chute = dic[continente_chute][comando]
                 latitude_chute = info_chute['geo']['latitude'] 
-                longitude_chute = info_chute['geo']['longitude'] 
-                # distancia = fun.haversine(EARTH_RADIUS,latitude_escolida,longitude_escolida,latitude_chute,longitude_chute)
+                longitude_chute = info_chute['geo']['longitude']
+                # definir distancia 
                 distancia = fun.haversine(EARTH_RADIUS,latitude_chute,longitude_chute,latitude_escolida,longitude_escolida)
-                distancia_texto = '\t {0:.3f} km -> {1}'.format(distancia, comando)
-                distancia_lista += (str(distancia_texto))
-                distancia_lista += ('\n')
+                # printar lista de distancias
+                if comando not in chutes:
+                    chutes.append(comando)
+                    distancia_lista = fun.adiciona_em_ordem(comando,distancia,distancia_lista)
+                    print(fun.distancias(distancia_lista))
+                else:
+                    print("\n \n Voce ja tentou esse pais e viu que nao deu certo, ta tentando ele denovo porque? \n \n ")
+                    print(fun.distancias(distancia_lista))
 
-                print(distancia_lista)
-                print('Você tem {0} tentativa(s)'.format(tentativas))
             else:
                 print('Pais Desconhecido')
-
 
         # DESISTO NAO FEITO(RE-ESCOLHER O PAIS DEPOIS DE COMECAR UMA RODADA NOVA,[so copiar e colar o codigo usado no comeco???])!!!
         if comando == 'desisto':
@@ -119,25 +183,68 @@ while tentativas > 0:
                 print('Que pena, boa sorte na proxima vez.... PERDEDOR')
                 outra_rodada = input('Jogar novamente? [s|n] ' )
                 if outra_rodada == 's':
+                    # OUTRO PAIS
+                    # PAIS ESCOLHIDO
+                    continentes = list(dic.keys())
+                    continente_escolhido = random.choice(continentes)
+                    pais_escolhido = fun.sorteia_pais(dic[continente_escolhido])
+                    # INFO do pais
+                    info_pais= dic[continente_escolhido][pais_escolhido]
+                    area = info_pais['area']
+                    populacao = info_pais['populacao']
+                    capital = info_pais['capital']
+                    bandeira = info_pais['bandeira']
+                    longitude_escolida = info_pais['geo']['longitude']
+                    latitude_escolida = info_pais['geo']['latitude'] 
+                    # LETRA(CAPITAL) PARA DICA
+                    letras_possiveis = []
+                    letras_capital = list(capital)
+                    for letra in capital:
+                        if letra != ' ' and letra != "'":
+                            letras_possiveis.append(letra)
+                    # CORES PARA DICA
+                    cores_presentes = []
+                    cores = list(bandeira.keys())
+                    for cor in cores:
+                        if cor != 'outras':
+                            if bandeira[cor] != 0:
+                                cores_presentes.append(cor)
+                    print('\n')
+                    # info para developer, VERSAO FINAL TEM Q TER ISSO COMENTADO OU REMOVIDO
+                    # print('pais_escolhido: ', pais_escolhido)
+                    # print('letras_possiveis: ', letras_possiveis)
+                    # print('cores_presentes: ', cores_presentes)
                     tentativas = 20
+                    lista_cor = []
+                    lista_letras = []
+                    area_lista = []
+                    populacao_lista = []
+                    continente_lista = []
+                    verifica_area = 0
+                    verifica_população = 0
+                    verifica_continente = 0
+                    distancia_lista = []
+                    chutes = []
                     print(fun.menu(tentativas))
                     print('\n \n')
-                    # comando = input('Qual seu palpite? ' )
+                    comando = input('Qual seu palpite? ' )
+
                 elif outra_rodada != 's':       # nao jogar denovo
+                    print('\n \n Obrigado por jogar, volte sempre! \n \n')
                     continuar_jogando == False
                     exit()
 
         # INVENTARIO (FALTA ESPINA, FALAR COM BETO)
         if comando == 'inventario':
-            print('Distâncias: \n Dicas: \n  - Cores da bandeira: {0} \n  - Letras da capital: {1} \n  - Área: {2} \n  - População: {3} habitantes'.format(cores_presentes,letras_possiveis,area,populacao))
-            comando = input('Qual seu palpite? ' )
+            print(fun.dica_menu(lista_cor,lista_letras,area_lista,populacao_lista,continente_lista))
+            print(fun.distancias(distancia_lista))
 
         if comando == "dica":
             print(fun.mercado(verifica_area,verifica_população,verifica_continente))
         
         # DICA (FALTA ESPINA, FALAR COM BETO)
         while comando == 'dica':
-          
+        
             opc = int(input('Escolha sua opção: {} '.format(str(fun.opc_menu(verifica_area,verifica_população,verifica_continente)))))
             
             #Cor da bandeira
@@ -240,5 +347,4 @@ while tentativas > 0:
 
 
 # FALTA
-#   - Reescolher um pais quando comecar uma rodada nova
-#   - Lista de paises que ja foi chutato
+#   - arrumar erro das dicas (quando o usuario consegue pedir mais cores/letras do que tem disponiveis )
