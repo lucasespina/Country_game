@@ -256,8 +256,9 @@ while outra_rodada_final == True:
             while comando == 'dica':
                 
                 opc = int(input('Escolha sua opção: {} '.format(str(fun.opc_menu(verifica_area,verifica_população,verifica_continente)))))
-                if opc != 0 and opc != 1 and opc != 2 and opc != 3 and opc != 4 and opc != 5:
+                if opc != 0 and opc != 1 and opc != 2 and opc != 3 and opc != 4 and opc != 5 :
                     print("Por favor responder 'Dicas' com uma das opcoes apresentadas")
+                    # opc = int(input('Escolha sua opção: {} '.format(str(fun.opc_menu(verifica_area,verifica_população,verifica_continente)))))
                 else:
                 #Cor da bandeira
                     if opc == 1:
