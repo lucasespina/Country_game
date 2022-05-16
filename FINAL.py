@@ -43,7 +43,7 @@ while outra_rodada_final == True:
     print('\n')
 
     # info para developer, VERSAO FINAL TEM Q TER ISSO COMENTADO OU REMOVIDO
-    print('pais_escolhido: ', pais_escolhido)
+    # print('pais_escolhido: ', pais_escolhido)
     # print('letras_possiveis: ', letras_possiveis)
     # print('cores_presentes: ', cores_presentes)
 
