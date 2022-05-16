@@ -193,7 +193,6 @@ def dica_menu(lista_cor,lista_letras,area_lista,populacao_lista,continente_lista
     return dica
 
 def opc_menu(verifica_area,verifica_populacao,verifica_continente):
-    
     lista_opc = ["1","2","3","4","5","0"]
 
     
