@@ -39,10 +39,9 @@ while outra_rodada_final == True:
             if bandeira[cor] != 0:
                 cores_presentes.append(cor)
 
-    # para as dicas, pegar os valores (area, populacao,letras_possiveis,cores_presentes)
     print('\n')
 
-    # info para developer, VERSAO FINAL TEM Q TER ISSO COMENTADO OU REMOVIDO
+    # INFO PARA DEVELOPER, VERSAO FINAL TEM Q TER ISSO COMENTADO OU REMOVIDO
     # print('pais_escolhido: ', pais_escolhido)
     # print('letras_possiveis: ', letras_possiveis)
     # print('cores_presentes: ', cores_presentes)
@@ -81,8 +80,6 @@ while outra_rodada_final == True:
             if comando == pais_escolhido:
                 print('\033[1;36m *** Parabéns! Você acertou após {0} tentativas!'.format(20 - tentativas+1))
                 print('\033[0;0m')
-                # arrumar o jogar outra rodada do desisto e copiar o codigo aqui
-                # isso eh como ta atualmente(incompleto) o "jogar novamente?"
                 outra_rodada = input('Jogar novamente? [s|n] ' )
                 if outra_rodada == 's':
 
@@ -243,7 +240,6 @@ while outra_rodada_final == True:
                         contagem_letra = 0
                         print(fun.menu(tentativas))
                         print('\n \n')
-                        # comando = input('Qual seu palpite? ' )
 
                     elif outra_rodada != 's':       # nao jogar denovo
                         print('\n \n Obrigado por jogar, volte sempre! \n \n')
@@ -259,7 +255,7 @@ while outra_rodada_final == True:
             if comando == "dica":
                 print(fun.mercado(verifica_area,verifica_população,verifica_continente))
             
-            # DICA (FALTA ESPINA, FALAR COM BETO)
+            # DICA
             while comando == 'dica':
                 
                 
