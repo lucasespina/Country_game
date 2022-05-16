@@ -179,7 +179,7 @@ while outra_rodada_final == True:
                         if tentativas <= 0:
                             break
                     else:
-                        print("\n \n \033[1;36m Voce ja tentou esse pais e viu que nao deu certo, ta tentando ele denovo porque? \033[0;0m \n \n ")
+                        print("\n \n \033[1;36m Voce ja tentou esse pais e viu que nao deu certo, ta tentando ele novamente porque? \033[0;0m \n \n ")
                         print('\033[0;0m')
                         print(fun.distancias(distancia_lista))
                         print('\033[0;0m')
