@@ -71,8 +71,11 @@ while outra_rodada_final == True:
         continuar_jogando = True
         # CONTINUAR JOGANDO
         while continuar_jogando:
-
-            comando = input('Qual seu palpite? ' )
+            
+            
+            comando_format = input('Qual seu palpite? ' )
+            
+            comando = comando_format.lower()
 
             # ACERTOU O CHUTE
             if comando == pais_escolhido:
@@ -141,7 +144,10 @@ while outra_rodada_final == True:
                     print(fun.menu(tentativas))
                     print('\n \n')
 
-                    comando = input('Qual seu palpite? ' )
+                                    
+                    comando_format = input('Qual seu palpite? ' )
+            
+                    comando = comando_format.lower()
 
                 elif outra_rodada != 's':       # nao jogar denovo
                     print('\n \n Obrigado por jogar, volte sempre! \n \n')
