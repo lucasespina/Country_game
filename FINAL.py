@@ -43,7 +43,7 @@ while outra_rodada_final == True:
     print('\n')
 
     # info para developer, VERSAO FINAL TEM Q TER ISSO COMENTADO OU REMOVIDO
-    # print('pais_escolhido: ', pais_escolhido)
+    print('pais_escolhido: ', pais_escolhido)
     # print('letras_possiveis: ', letras_possiveis)
     # print('cores_presentes: ', cores_presentes)
 
@@ -248,6 +248,7 @@ while outra_rodada_final == True:
             if comando == 'inventario':
                 print(fun.dica_menu(lista_cor,lista_letras,area_lista,populacao_lista,continente_lista))
                 print(fun.distancias(distancia_lista))
+                print("\033[0;0m")
 
             if comando == "dica":
                 print(fun.mercado(verifica_area,verifica_população,verifica_continente))
@@ -255,8 +256,8 @@ while outra_rodada_final == True:
             # DICA (FALTA ESPINA, FALAR COM BETO)
             while comando == 'dica':
                 
-                opc = int(input('Escolha sua opção: {} '.format(str(fun.opc_menu(verifica_area,verifica_população,verifica_continente)))))
-                if opc != 0 and opc != 1 and opc != 2 and opc != 3 and opc != 4 and opc != 5 :
+                opc = (input('Escolha sua opção: {} '.format(str(fun.opc_menu(verifica_area,verifica_população,verifica_continente)))))
+                if opc != 0 and opc != 1 and opc != 2 and opc != 3 and opc != 4 and opc != 5:
                     print("Por favor responder 'Dicas' com uma das opcoes apresentadas")
                     # opc = int(input('Escolha sua opção: {} '.format(str(fun.opc_menu(verifica_area,verifica_população,verifica_continente)))))
                 else:
@@ -367,8 +368,8 @@ while outra_rodada_final == True:
                         print('Você tem {0} tentativas'.format(tentativas))
                         break
 
-            # else:
-            #     print("Por favor responder 'Dicas' com uma das opcoes apresentadas")
+
+
 # ACABOU AS TENTATIVAS
     print('ACABOU SUAS TENTATIVAS!')
     print('O pais era {0}'.format(pais_escolhido))
@@ -383,6 +384,3 @@ while outra_rodada_final == True:
     else:
         print('Por favor responder [s/n]')
         outra_rodada = input('Voce quer jogar novamente? [s/n]')
-
-# FALTA
-#   - arrumar erro das dicas (quando o usuario consegue pedir mais cores/letras do que tem disponiveis )
